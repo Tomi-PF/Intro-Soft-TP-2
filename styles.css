@@ -6,25 +6,24 @@ body {
 
 /* Estilo del logo */
 .logo {
-    height: 50px; /* Cambia el tamaño según tu preferencia */
-    margin-right: 20px; /* Espacio entre el logo y los enlaces */
-    vertical-align: middle; /* Alineación vertical */
+    height: 50px;
+    margin-right: 20px;
+    vertical-align: middle;
 }
 
-/* Asegura que los elementos del nav estén alineados */
 nav {
     display: flex;
-    align-items: center; /* Centra verticalmente los elementos */
-    padding: 10px; /* Espaciado interno */
+    align-items: center; 
+    padding: 10px;
 }
 
 /* Espaciado y estilo de los enlaces */
 nav a {
-    text-decoration: none; /* Sin subrayado */
-    margin-right: 15px; /* Espaciado entre enlaces */
-    color: #000; /* Color del texto */
-    font-family: Arial, sans-serif; /* Tipografía */
-    font-size: 16px; /* Tamaño del texto */
+    text-decoration: none;
+    margin-right: 15px;
+    color: #000;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
 }
 
 
@@ -45,23 +44,24 @@ footer {
     bottom: 0;
 }
 
+/* Carrousel de imagenes*/
 .carousel {
     position: relative;
-    max-width: 600px; /* Tamaño del carrusel */
-    margin: 20px auto; /* Centrado */
-    overflow: hidden; /* Oculta las imágenes fuera del contenedor */
+    max-width: 600px;
+    margin: 20px auto;
+    overflow: hidden;
     border: 2px solid #ddd;
     border-radius: 10px;
 }
 
 .carousel-images {
-    display: flex; /* Las imágenes se colocan una al lado de la otra */
-    transition: transform 0.5s ease; /* Animación suave al cambiar de imagen */
+    display: flex;
+    transition: transform 0.5s ease;
 }
 
 .carousel-images img {
-    width: 100%; /* Cada imagen ocupa todo el ancho del carrusel */
-    flex-shrink: 0; /* Las imágenes no se reducen */
+    width: 100%;
+    flex-shrink: 0;
 }
 
 button.prev, button.next {
@@ -78,11 +78,11 @@ button.prev, button.next {
 }
 
 button.prev {
-    left: 10px; /* Botón izquierdo */
+    left: 10px;
 }
 
 button.next {
-    right: 10px; /* Botón derecho */
+    right: 10px;
 }
 
 button.prev:hover, button.next:hover {
