@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo del logo */
+.logo {
+    height: 50px; /* Cambia el tamaño según tu preferencia */
+    margin-right: 20px; /* Espacio entre el logo y los enlaces */
+    vertical-align: middle; /* Alineación vertical */
+}
+
+/* Asegura que los elementos del nav estén alineados */
+nav {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Espaciado y estilo de los enlaces */
+nav a {
+    text-decoration: none; /* Sin subrayado */
+    margin-right: 15px; /* Espaciado entre enlaces */
+    color: #000; /* Color del texto */
+    font-family: Arial, sans-serif; /* Tipografía */
+    font-size: 16px; /* Tamaño del texto */
+}
+
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 20px;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.carousel {
+    position: relative;
+    max-width: 600px; /* Tamaño del carrusel */
+    margin: 20px auto; /* Centrado */
+    overflow: hidden; /* Oculta las imágenes fuera del contenedor */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.carousel-images {
+    display: flex; /* Las imágenes se colocan una al lado de la otra */
+    transition: transform 0.5s ease; /* Animación suave al cambiar de imagen */
+}
+
+.carousel-images img {
+    width: 100%; /* Cada imagen ocupa todo el ancho del carrusel */
+    flex-shrink: 0; /* Las imágenes no se reducen */
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+button.prev {
+    left: 10px; /* Botón izquierdo */
+}
+
+button.next {
+    right: 10px; /* Botón derecho */
+}
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+

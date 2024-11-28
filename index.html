@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aterrizar</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+
+<body>
+
+    <nav>
+        <a href="#">
+            <img src="img/logo.png" alt="Logo de Aterrizar" class="logo">
+        </a>
+        <a href="#" onclick="mostrarContenido('Inicio')">Inicio</a>
+        <a href="#" onclick="mostrarContenido('Alojamientos')">Alojamientos</a>
+        <a href="#" onclick="mostrarContenido('Reservas')">Reservas</a>
+    </nav>
+    
+    <div class="content">
+        <section id="inicio">          
+            <h2>Página de Inicio</h2>
+            <p>Bienvenido a Aterrizar.</p>
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="img/imagen1.jpg" alt="Imagen 1">
+                    <img src="img/imagen2.jpg" alt="Imagen 2">
+                    <img src="img/imagen3.jpg" alt="Imagen 3">
+                </div>
+                <button class="prev" onclick="cambiarImagen(-1)">&#10094;</button>
+                <button class="next" onclick="cambiarImagen(1)">&#10095;</button>
+            </div>  
+        </section>
+    
+        <section id="alojamientos" style="display: none;">
+            <h2>Alojamientos</h2>
+            <p>Aquí puedes encontrar los mejores alojamientos de Argentina</p>
+        </section>
+    
+        <section id="reservas" style="display: none;">
+            <h2>Reservas</h2>
+            <p>Formulario para hacer su reserva</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Contacto: <a href="mailto:Aterrizar@gmail.com">Aterrizar@gmail.com</a> | Teléfono: 0800-777-2354</p>
+    </footer>
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
