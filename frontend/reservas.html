@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aterrizar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
 </head>
 
 <body>
 
-    <nav>
-        <a href="index.html">
-            <img src="img/logo.png" alt="Logo de Aterrizar" class="logo">
-        </a>
-        <a href="index.html" onclick="mostrarContenido('Inicio')">Inicio</a>
-        <a href="alojamientos.html" onclick="mostrarContenido('Alojamientos')">Alojamientos</a>
-        <a href="reservas.html" onclick="mostrarContenido('Reservas')">Reservas</a>
-    </nav>
+    <div class="navbar">
+
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                
+                <a href="index.html">
+                    <img src="img/Logo.png" alt="Logo de Aterrizar" class="logo">
+                </a>
+
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+                
+                <div class="navbar-start">
+                
+                    <a href="index.html" class="navbar-item">Inicio</a>
+          
+                    <a href="alojamientos.html" class="navbar-item">Alojamientos</a>
+
+                    <a href="reservas.html" class="navbar-item">Reservas</a>
+                    
+                </div>
+
+            </div>
+
+        </nav>
+
+    </div>
     
     <div class="content">    
         <h2>Reservas</h2>
