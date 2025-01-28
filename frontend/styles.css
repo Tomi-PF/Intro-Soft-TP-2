@@ -50,20 +50,20 @@ footer {
     margin-top: 20px;
 }
 
-/* Cada tarjeta de alojamiento */
 .alojamiento-card {
     position: relative;
+    width: 100%; /* Ocupa el 100% de la columna */
+    height: 300px; /* Altura fija para que todas las tarjetas sean del mismo tamaño */
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Asegurando que las imágenes de los alojamientos tengan el mismo tamaño */
+/* Tamaño de las imágenes de alojamiento */
 .alojamiento-img {
     width: 100%;
-    height: 200px; /* Altura fija para todas las imágenes */
-    object-fit: cover; /* Para que la imagen se ajuste sin deformarse */
-    transition: transform 0.3s ease;
+    height: 100%;
+    object-fit: cover; 
 }
 
 /* Overlay que aparece cuando el cursor pasa sobre la imagen */
@@ -94,7 +94,7 @@ footer {
 }
 
 .alojamiento-card:hover .alojamiento-img {
-    transform: scale(1.1); /* Aumenta el tamaño de la imagen ligeramente al hacer hover */
+    transform: scale(1.1);
 }
 
 /* Cuadrícula 3x3 de las imágenes */
@@ -150,5 +150,6 @@ button.next {
 button.prev:hover, button.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
 
 
