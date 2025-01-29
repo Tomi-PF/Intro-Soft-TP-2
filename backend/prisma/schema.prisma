@@ -22,6 +22,8 @@ model Ciudad {
   año_fundacion Int
 
   Hotel Hotel[]
+
+  Reserva Reserva[]
 }
 
 model Hotel {
@@ -34,4 +36,19 @@ model Hotel {
   calle        String
   num_calle    Int
   telefono     Int
+
+  Reserva Reserva[]
+}
+
+model Reserva {
+  id                Int      @id @default(autoincrement())
+  ciudad            Ciudad   @relation(fields: [id_ciudad], references: [id])
+  id_ciudad         Int
+  hotel             Hotel    @relation(fields: [id_hotel], references: [id])
+  id_hotel          Int
+  nombre_reserva    String
+  cant_personas     Int
+  cant_habitaciones Int
+  fecha_ingreso     DateTime
+  fecha_salida      DateTime
 }
