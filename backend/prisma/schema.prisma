@@ -20,4 +20,18 @@ model Ciudad {
   Provincia      String
   tamaño        Decimal
   año_fundacion Int
+
+  Hotel Hotel[]
+}
+
+model Hotel {
+  id           Int     @id @default(autoincrement())
+  nombre       String
+  foto_hotel   String
+  ciudad       Ciudad  @relation(fields: [id_ciudad], references: [id])
+  id_ciudad    Int
+  calificacion Decimal
+  calle        String
+  num_calle    Int
+  telefono     Int
 }
