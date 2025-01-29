@@ -12,3 +12,12 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Ciudad {
+  id             Int     @id @default(autoincrement())
+  nombre         String
+  foto_ciudad    String
+  Provincia      String
+  tamaño        Decimal
+  año_fundacion Int
+}
