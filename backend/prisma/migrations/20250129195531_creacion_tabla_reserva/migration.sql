@@ -6,8 +6,8 @@ CREATE TABLE "Reserva" (
     "nombre_reserva" TEXT NOT NULL,
     "cant_personas" INTEGER NOT NULL,
     "cant_habitaciones" INTEGER NOT NULL,
-    "fecha_ingreso" TIMESTAMP(3) NOT NULL,
-    "fecha_salida" TIMESTAMP(3) NOT NULL,
+    "fecha_ingreso" TEXT NOT NULL,
+    "fecha_salida" TEXT NOT NULL,
 
     CONSTRAINT "Reserva_pkey" PRIMARY KEY ("id")
 );

@@ -17,7 +17,7 @@ model Ciudad {
   id             Int     @id @default(autoincrement())
   nombre         String
   foto_ciudad    String
-  Provincia      String
+  provincia      String
   tamaño        Decimal
   año_fundacion Int
 
@@ -41,14 +41,14 @@ model Hotel {
 }
 
 model Reserva {
-  id                Int      @id @default(autoincrement())
-  ciudad            Ciudad   @relation(fields: [id_ciudad], references: [id])
+  id                Int    @id @default(autoincrement())
+  ciudad            Ciudad @relation(fields: [id_ciudad], references: [id])
   id_ciudad         Int
-  hotel             Hotel    @relation(fields: [id_hotel], references: [id])
+  hotel             Hotel  @relation(fields: [id_hotel], references: [id])
   id_hotel          Int
   nombre_reserva    String
   cant_personas     Int
   cant_habitaciones Int
-  fecha_ingreso     DateTime
-  fecha_salida      DateTime
+  fecha_ingreso     String
+  fecha_salida      String
 }
