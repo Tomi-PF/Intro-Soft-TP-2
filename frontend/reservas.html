@@ -42,6 +42,82 @@
     <div class="content">    
         <h2>Reservas</h2>
         <p>Formulario para hacer su reserva</p>
+
+        <div class="formulario">
+            <form action="">
+                
+                <div>
+                    <label>Nombre </label>
+                    <input type="text" placeholder="Tu nombre">
+                </div>
+                
+                <div>
+                    <label>Apellido </label>
+                    <input type="text" placeholder="Tu Apellido">
+                </div>
+
+
+                <div>
+                    <label>Ciudad destino </label>
+                    <select name="opcion">
+                        <option value="" disabled selected>Elige la ciudad</option>
+                        <option value="">Mar del plata</option>
+                        <option value="">Pinamar</option>
+                        <option value="">Villa Gessell</option>
+                        <option value="">Miramar</option>
+                        <option value="">Mar del Tuyú</option>
+                        <option value="">Santa Teresita</option>
+                        <option value="">San Bernardo</option>
+                        <option value="">Cariló</option>
+                        <option value="">Mar de ajó</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Cantidad de personas</label>
+                    <div class="cant_personas_container">
+                        <button type="button" id="restar" onclick="actualizarNumero(-1)">-</button>
+                        <input type="number" id="numero" value="1" min="1" readonly>
+                        <button type="button" id="sumar" onclick="actualizarNumero(1)">+</button>
+                    </div>
+                </div>
+
+
+                <div>
+                    <label>Cantidad de habitaciones</label>
+                    <div class="cant_personas_container">
+                        <button type="button" id="restar" onclick="actualizarNumero2(-1)">-</button>
+                        <input type="number" id="numero2" value="1" min="1" readonly>
+                        <button type="button" id="sumar" onclick="actualizarNumero2(1)">+</button>
+                    </div>
+                </div>
+
+
+                <div>
+                    <label>Hotel</label>
+                    <select name="opcion">
+                        <option value="" disabled selected>Elige el hotel</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label>Fecha de Entrada:</label>
+                    <input type="date" required>
+
+                    <label>Fecha de salida:</label>
+                    <input type="date" required>
+                </div>
+
+
+
+            </form>
+            
+
+        </div>
     </div>
 
     <footer>

@@ -33,3 +33,24 @@ function cambiarImagen(direccion) {
 }
 
 setInterval(() => cambiarImagen(1), 5000); // Cambia cada 5 segundos
+
+
+function actualizarNumero(valor) {
+    const input = document.getElementById('numero');
+    let numero = parseInt(input.value);
+    numero += valor;
+    // Asegurarse de que el valor no sea menor que 1
+    if (numero >= 1) {
+      input.value = numero;
+    }
+  }
+
+function actualizarNumero2(valor) {
+    const input = document.getElementById('numero2');
+    let numero = parseInt(input.value);
+    numero += valor;
+    // Asegurarse de que el valor no sea menor que 1
+    if (numero >= 1) {
+      input.value = numero;
+    }
+  }
