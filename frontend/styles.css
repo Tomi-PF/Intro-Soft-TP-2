@@ -91,11 +91,11 @@ button.prev:hover, button.next:hover {
 
 
 
- form {
+.form-reservas {
     width: auto;
     margin: auto;
     padding: 20px;
-    background: #f9f9f9;
+    background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 } 
@@ -117,7 +117,7 @@ label {
     font-size: 16px;
 } 
 
-button {
+.button-form {
     width: 100%;
     padding: 10px;
     background: #007bff;
@@ -132,9 +132,8 @@ button:hover {
     background: #0056b3;
 }
 
-form div {
+.form-reservas div {
     margin: 20px;
-
 }
 
 .cant_personas_container {
