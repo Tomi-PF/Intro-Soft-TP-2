@@ -35,6 +35,12 @@ npm run start
 
 ### En la carpeta "backend"
 
+Para **realizar** las **migraciones** de las **tablas** de la **base de datos**:
+
+```sh
+npx prisma migrate dev
+```
+
 Para **iniciar** la **base de datos**:
 
 ```sh
