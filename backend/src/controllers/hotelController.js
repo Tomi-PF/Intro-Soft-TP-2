@@ -79,8 +79,38 @@ const createHotel = async (req, res) => {
   }
 }
 
+// Solo modifica lo que se ponga en el body, lo demás no
+const updateHotel = async (req, res) => {
+  const { id } = req.params
+  const { nombre, foto_hotel, id_ciudad, calificacion, calle, num_calle, telefono } = req.body
+
+  try {
+    const hotelUpdated = await prisma.hotel.update({
+      where: {
+        id: parseInt(id)
+      },
+      data: {
+        nombre,
+        foto_hotel,
+        id_ciudad,
+        calificacion,
+        calle,
+        num_calle,
+        telefono
+      }
+    })
+    res.json(hotelUpdated)
+
+  } catch (error) {
+    res.status(404).json({
+      error: "Hotel no encontrado"
+    })
+  }
+}
+
 module.exports = {
     getAllHoteles,
     getHotel,
-    createHotel
+    createHotel,
+    updateHotel
   }
