@@ -3,10 +3,12 @@ const router = express.Router();
 
 const {
     getAllHoteles,
-    getHotel
+    getHotel,
+    createHotel
 } = require('../controllers/hotelController')
 
 router.get('/', getAllHoteles)
 router.get('/:id', getHotel)
+router.post('/', createHotel)
 
-MediaSourceHandle.exports = router
+module.exports = router
