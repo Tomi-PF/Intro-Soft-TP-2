@@ -20,6 +20,9 @@ app.use('/api/v1/ciudades', ciudadRoutes)
 const hotelRoutes = require('./routes/hotelRoutes')
 app.use('/api/v1/hoteles', hotelRoutes)
 
+const reservaRoutes = require('./routes/reservaRoutes')
+app.use('/api/v1/reservas', reservaRoutes)
+
 app.listen(port, () => {
   console.log(`Aterrizar app listening on port ${port}`)
 })
