@@ -104,8 +104,42 @@ const createReserva = async (req, res) => {
   }
 }
 
+// Solo modifica lo que se ponga en el body, lo demás no
+const updateReserva = async (req, res) => {
+  const { id } = req.params
+  const { nombre_reserva, id_ciudad, id_hotel, cant_personas, cant_habitaciones, fecha_ingreso, fecha_salida } = req.body
+
+  try {
+    const reservaUpdated = await prisma.reserva.update({
+      where: {
+        id: parseInt(id)
+      },
+      data: {
+        nombre_reserva,
+        id_ciudad,
+        id_hotel,
+        cant_personas,
+        cant_habitaciones,
+        fecha_ingreso,
+        fecha_salida
+      },
+      include: {
+        ciudad: true, // Trae datos de la ciudad del hotel
+        hotel: true // Trae datos del hotel
+      }
+    })
+    res.json(reservaUpdated)
+
+  } catch (error) {
+    res.status(404).json({
+      error: "Reserva no encontrada"
+    })
+  }
+}
+
 module.exports = {
   getAllReservas,
   getReserva,
-  createReserva
+  createReserva,
+  updateReserva
 }
