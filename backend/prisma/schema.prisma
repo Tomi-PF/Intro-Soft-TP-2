@@ -18,8 +18,8 @@ model Ciudad {
   nombre         String
   foto_ciudad    String
   provincia      String
-  tamaño        Decimal
-  año_fundacion Int
+  tamaño        Decimal @default(0)
+  año_fundacion Int     @default(0)
 
   Hotel Hotel[]
 
@@ -32,10 +32,10 @@ model Hotel {
   foto_hotel   String
   ciudad       Ciudad  @relation(fields: [id_ciudad], references: [id])
   id_ciudad    Int
-  calificacion Decimal
+  calificacion Decimal @default(0)
   calle        String
-  num_calle    Int
-  telefono     Int
+  num_calle    Int     @default(0)
+  telefono     Int     @default(0)
 
   Reserva Reserva[]
 }
@@ -47,8 +47,8 @@ model Reserva {
   hotel             Hotel  @relation(fields: [id_hotel], references: [id])
   id_hotel          Int
   nombre_reserva    String
-  cant_personas     Int
-  cant_habitaciones Int
-  fecha_ingreso     String
-  fecha_salida      String
+  cant_personas     Int    @default(1)
+  cant_habitaciones Int    @default(1)
+  fecha_ingreso     String @default("No especificada")
+  fecha_salida      String @default("No especificada")
 }
