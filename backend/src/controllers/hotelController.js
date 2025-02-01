@@ -108,9 +108,28 @@ const updateHotel = async (req, res) => {
   }
 }
 
+const deleteHotel = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    await prisma.hotel.delete({
+      where: {
+        id: parseInt(id)
+      }
+    })
+    res.sendStatus(200)
+
+  } catch (error) {
+    res.status(404).json({
+      error: "Hotel no encontrado"
+    })
+  }
+}
+
 module.exports = {
     getAllHoteles,
     getHotel,
     createHotel,
-    updateHotel
+    updateHotel,
+    deleteHotel
   }
