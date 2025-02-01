@@ -1,19 +1,21 @@
 const express = require('express')
 const cors = require('cors')
 const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
 const app = express()
 const port = 3000
 
-const prisma = new PrismaClient()
-
 app.use(cors())
-app.use(express.json()) // Parse JSON
+app.use(express.json())
 
 // Check si funciona
 app.get('/', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date() })
 })
+
+const ciudadRoutes = require('./routes/ciudadRoutes')
+app.use('/api/v1/ciudades', ciudadRoutes)
 
 app.listen(port, () => {
   console.log(`Aterrizar app listening on port ${port}`)
