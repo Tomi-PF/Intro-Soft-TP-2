@@ -48,6 +48,7 @@ const getReserva = async (req, res) => {
   }
 }
 
+//Falta verificar q el hotel y la ciudad coincidan
 const createReserva = async (req, res) => {
   const { nombre_reserva, id_ciudad, id_hotel, cant_personas, cant_habitaciones, fecha_ingreso, fecha_salida } = req.body
 
@@ -137,9 +138,28 @@ const updateReserva = async (req, res) => {
   }
 }
 
+const deleteReserva = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    await prisma.reserva.delete({
+      where: {
+        id: parseInt(id)
+      }
+    })
+    res.sendStatus(200)
+
+  } catch (error) {
+    res.status(404).json({
+      error: "Reserva no encontrada"
+    })
+  }
+}
+
 module.exports = {
   getAllReservas,
   getReserva,
   createReserva,
-  updateReserva
+  updateReserva,
+  deleteReserva
 }

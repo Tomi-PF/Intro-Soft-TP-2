@@ -5,12 +5,14 @@ const {
     getAllReservas,
     getReserva,
     createReserva,
-    updateReserva
+    updateReserva,
+    deleteReserva
 } = require('../controllers/reservaController')
 
 router.get('/', getAllReservas)
 router.get('/:id', getReserva)
 router.post('/', createReserva)
 router.put('/:id', updateReserva)
+router.delete('/:id', deleteReserva)
 
 module.exports = router
