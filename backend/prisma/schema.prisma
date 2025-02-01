@@ -42,13 +42,14 @@ model Hotel {
 
 model Reserva {
   id                Int    @id @default(autoincrement())
+  nombre_reserva    String
+  apellido_reserva  String
   ciudad            Ciudad @relation(fields: [id_ciudad], references: [id])
   id_ciudad         Int
-  hotel             Hotel  @relation(fields: [id_hotel], references: [id])
-  id_hotel          Int
-  nombre_reserva    String
   cant_personas     Int    @default(1)
   cant_habitaciones Int    @default(1)
+  hotel             Hotel  @relation(fields: [id_hotel], references: [id])
+  id_hotel          Int
   fecha_ingreso     String @default("No especificada")
   fecha_salida      String @default("No especificada")
 }
