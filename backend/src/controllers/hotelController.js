@@ -4,7 +4,11 @@ const prisma = new PrismaClient()
 // Busca todos los hoteles
 const getAllHoteles = async (req, res) => {
   try {
-    const hoteles = await prisma.hotel.findMany()
+    const hoteles = await prisma.hotel.findMany({
+      include: {
+        ciudad: true // Trae datos de la ciudad del hotel
+      }
+    })
     res.json(hoteles)
 
   } catch (error) {
@@ -22,6 +26,9 @@ const getHotel = async (req, res) => {
     const ciudad = await prisma.hotel.findUnique({
       where: {
         id: parseInt(id)
+      },
+      include: {
+        ciudad: true // Trae datos de la ciudad del hotel
       }
     })
     res.json(hotel)
@@ -68,6 +75,9 @@ const createHotel = async (req, res) => {
         calle: calle || "Sin dirección", // por default sin dirección
         num_calle: parseInt(num_calle) || 0, // 0 default
         telefono: parseInt(telefono) || 0 // 0 default
+      },
+      include: {
+        ciudad: true // Trae datos de la ciudad del hotel
       }
     })
     res.status(201).json(nuevoHotel)
@@ -97,6 +107,9 @@ const updateHotel = async (req, res) => {
         calle,
         num_calle,
         telefono
+      },
+      include: {
+        ciudad: true // Trae datos de la ciudad del hotel
       }
     })
     res.json(hotelUpdated)
