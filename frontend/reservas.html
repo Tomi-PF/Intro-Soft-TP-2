@@ -46,20 +46,20 @@
         <div class="form-reservas">
             <form action="">
                 
-                <div>
+                <div class="form-reservas-div">
                     <label>Nombre </label>
-                    <input type="text" placeholder="Tu nombre">
+                    <input name="nombre" type="text" placeholder="Tu nombre">
                 </div>
                 
-                <div>
+                <div class="form-reservas-div">
                     <label>Apellido </label>
-                    <input type="text" placeholder="Tu Apellido">
+                    <input name="apellido" type="text" placeholder="Tu Apellido">
                 </div>
 
 
-                <div>
+                <div class="form-reservas-div">
                     <label>Ciudad destino </label>
-                    <select name="opcion">
+                    <select name="ciudad">
                         <option value="" disabled selected>Elige la ciudad</option>
                         <option value="">Mar del plata</option>
                         <option value="">Pinamar</option>
@@ -73,29 +73,29 @@
                     </select>
                 </div>
 
-                <div>
+                <div class="form-reservas-div">
                     <label>Cantidad de personas</label>
                     <div class="cant_personas_container">
                         <button class="button-form" type="button" id="restar" onclick="actualizarNumero(-1)">-</button>
-                        <input type="number" id="numero" value="1" min="1" readonly>
+                        <input name="cant-personas" type="number" id="numero" value="1" min="1" readonly>
                         <button class="button-form" type="button" id="sumar" onclick="actualizarNumero(1)">+</button>
                     </div>
                 </div>
 
 
-                <div>
-                    <label>Cantidad de habitaciones</label>
+                <div class="form-reservas-div">
+                    <label class="label-cant">Cantidad de habitaciones</label>
                     <div class="cant_personas_container">
                         <button class="button-form" type="button" id="restar" onclick="actualizarNumero2(-1)">-</button>
-                        <input type="number" id="numero2" value="1" min="1" readonly>
+                        <input name="cant-habitaciones" type="number" id="numero2" value="1" min="1" readonly>
                         <button class="button-form" type="button" id="sumar" onclick="actualizarNumero2(1)">+</button>
                     </div>
                 </div>
 
 
-                <div>
+                <div class="form-reservas-div">
                     <label>Hotel</label>
-                    <select name="opcion">
+                    <select name="hotel">
                         <option value="" disabled selected>Elige el hotel</option>
                         <option value="">1</option>
                         <option value="">2</option>
@@ -104,14 +104,15 @@
                 </div>
 
 
-                <div>
+                <div class="fechas">
                     <label>Fecha de Entrada:</label>
-                    <input type="date" required>
+                    <input name="fecha-entrada" type="date" required>
 
                     <label>Fecha de salida:</label>
-                    <input type="date" required>
+                    <input name="fecha-salida" type="date" required>
                 </div>
-
+                
+                <button class="send-button" type="submit">Enviar</button>
 
 
             </form>

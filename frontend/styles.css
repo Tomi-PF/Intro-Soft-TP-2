@@ -92,26 +92,26 @@ button.prev:hover, button.next:hover {
 
 
 .form-reservas {
-    width: auto;
+    width: 70%;
     margin: auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
 } 
 
 
 label {
     color: #000000;
     font-weight: bold;
-    margin-bottom: 10px;
-    display: block;
+    position: relative;
+    margin-right: 20px;
 }
 
  input, textarea, select {
     width: 40%;
     padding: 10px;
-    margin-bottom: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -120,7 +120,7 @@ label {
 .button-form {
     width: 100%;
     padding: 10px;
-    background: #007bff;
+    background: black;
     color: white;
     border: none;
     border-radius: 5px;
@@ -132,8 +132,23 @@ button:hover {
     background: #0056b3;
 }
 
-.form-reservas div {
+.fechas {
+    width: 100%;
+    border: 1px solid black;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-reservas-div {
     margin: 20px;
+    border: 1px solid black;
+    width: 45%;
+    height: 150px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
 }
 
 .cant_personas_container {
@@ -158,10 +173,20 @@ button:hover {
     font-size: 16px;
 }
 
-.cant_personas_container label {
-    display: flex;
+.label-cant {
+    left: 65px;
 }
 
 .cant_personas_container input {
     display: flex;
+}   
+
+.send-button {
+    display: block;
+    width: 100px;
+    height: 50px;
+    position: relative;
+    left: 45%;
+    background-color: #000000;
+    border-radius: 50px;
 }
