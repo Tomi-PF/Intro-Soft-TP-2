@@ -71,10 +71,10 @@ const createHotel = async (req, res) => {
         nombre,
         foto_hotel: foto_hotel || "default.jpg", // Cambiar a ruta default
         id_ciudad: parseInt(id_ciudad),
-        calificacion: new Prisma.Decimal(calificacion || 0), // Conversión a decimal, 0 default
+        calificacion: new Prisma.Decimal(calificacion), // Conversión a decimal
         calle: calle || "Sin dirección", // por default sin dirección
-        num_calle: parseInt(num_calle) || 0, // 0 default
-        telefono: parseInt(telefono) || 0 // 0 default
+        num_calle: parseInt(num_calle),
+        telefono: parseInt(telefono)
       },
       include: {
         ciudad: true // Trae datos de la ciudad del hotel

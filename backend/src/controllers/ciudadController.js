@@ -52,8 +52,8 @@ const createCiudad = async (req, res) => {
         nombre,
         foto_ciudad: foto_ciudad || "default.jpg", // usa default.jpg si no se especifica
         provincia,
-        tamaño: new Prisma.Decimal(tamaño || 0), // Conversión a decimal, 0 default
-        año_fundacion: año_fundacion || 0 // 0 default
+        tamaño: new Prisma.Decimal(tamaño), // Conversión a decimal
+        año_fundacion: año_fundacion
       }
     })
     res.status(201).json(nuevaCiudad)

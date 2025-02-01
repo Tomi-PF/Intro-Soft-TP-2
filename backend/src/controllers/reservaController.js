@@ -86,10 +86,10 @@ const createReserva = async (req, res) => {
         nombre_reserva,
         id_ciudad: parseInt(id_ciudad),
         id_hotel: parseInt(id_hotel),
-        cant_personas: parseInt(cant_personas) || 1, // default 1 persona
-        cant_habitaciones: parseInt(cant_habitaciones) || 1, // default 1 habitación
-        fecha_ingreso: fecha_ingreso || "No especificada",
-        fecha_salida: fecha_salida || "No especificada"
+        cant_personas: parseInt(cant_personas), 
+        cant_habitaciones: parseInt(cant_habitaciones),
+        fecha_ingreso: fecha_ingreso,
+        fecha_salida: fecha_salida
       },
       include: {
         ciudad: true, // Trae datos de la ciudad
