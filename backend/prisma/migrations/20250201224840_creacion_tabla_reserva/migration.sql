@@ -1,13 +1,14 @@
 -- CreateTable
 CREATE TABLE "Reserva" (
     "id" SERIAL NOT NULL,
-    "id_ciudad" INTEGER NOT NULL,
-    "id_hotel" INTEGER NOT NULL,
     "nombre_reserva" TEXT NOT NULL,
-    "cant_personas" INTEGER NOT NULL,
-    "cant_habitaciones" INTEGER NOT NULL,
-    "fecha_ingreso" TEXT NOT NULL,
-    "fecha_salida" TEXT NOT NULL,
+    "apellido_reserva" TEXT NOT NULL,
+    "id_ciudad" INTEGER NOT NULL,
+    "cant_personas" INTEGER NOT NULL DEFAULT 1,
+    "cant_habitaciones" INTEGER NOT NULL DEFAULT 1,
+    "id_hotel" INTEGER NOT NULL,
+    "fecha_ingreso" TEXT NOT NULL DEFAULT 'No especificada',
+    "fecha_salida" TEXT NOT NULL DEFAULT 'No especificada',
 
     CONSTRAINT "Reserva_pkey" PRIMARY KEY ("id")
 );
