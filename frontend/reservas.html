@@ -42,85 +42,96 @@
     <div class="content">    
         <h2>Reservas</h2>
         <p>Formulario para hacer su reserva</p>
-
-        <div class="form-reservas">
-            <form action="">
-                
-                <div class="form-reservas-div">
-                    <label>Nombre </label>
-                    <input name="nombre" type="text" placeholder="Tu nombre">
-                </div>
-                
-                <div class="form-reservas-div">
-                    <label>Apellido </label>
-                    <input name="apellido" type="text" placeholder="Tu Apellido">
-                </div>
-
-
-                <div class="form-reservas-div">
-                    <label>Ciudad destino </label>
-                    <select name="ciudad">
-                        <option value="" disabled selected>Elige la ciudad</option>
-                        <option value="">Mar del plata</option>
-                        <option value="">Pinamar</option>
-                        <option value="">Villa Gessell</option>
-                        <option value="">Miramar</option>
-                        <option value="">Mar del Tuyú</option>
-                        <option value="">Santa Teresita</option>
-                        <option value="">San Bernardo</option>
-                        <option value="">Cariló</option>
-                        <option value="">Mar de ajó</option>
-                    </select>
-                </div>
-
-                <div class="form-reservas-div">
-                    <label>Cantidad de personas</label>
-                    <div class="cant_personas_container">
-                        <button class="button-form" type="button" id="restar" onclick="actualizarNumero(-1)">-</button>
-                        <input name="cant-personas" type="number" id="numero" value="1" min="1" readonly>
-                        <button class="button-form" type="button" id="sumar" onclick="actualizarNumero(1)">+</button>
-                    </div>
-                </div>
-
-
-                <div class="form-reservas-div">
-                    <label class="label-cant">Cantidad de habitaciones</label>
-                    <div class="cant_personas_container">
-                        <button class="button-form" type="button" id="restar" onclick="actualizarNumero2(-1)">-</button>
-                        <input name="cant-habitaciones" type="number" id="numero2" value="1" min="1" readonly>
-                        <button class="button-form" type="button" id="sumar" onclick="actualizarNumero2(1)">+</button>
-                    </div>
-                </div>
-
-
-                <div class="form-reservas-div">
-                    <label>Hotel</label>
-                    <select name="hotel">
-                        <option value="" disabled selected>Elige el hotel</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                </div>
-
-
-                <div class="fechas">
-                    <label>Fecha de Entrada:</label>
-                    <input name="fecha-entrada" type="date" required>
-
-                    <label>Fecha de salida:</label>
-                    <input name="fecha-salida" type="date" required>
-                </div>
-                
-                <button class="send-button" type="submit">Enviar</button>
-
-
-            </form>
-            
-
-        </div>
     </div>
-
+        
+        
+        <section class="section-form">
+            
+            <div class="contenedor-form">
+                <header>Formulario de reserva</header>
+                <form class="form" action="form-reserva">
+                    
+                    <div class="input-box">
+                        <label>Nombre completo</label>
+                        <input type="text" placeholder="Ingrese su nombre completo" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label>Mail</label>
+                        <input type="email" placeholder="Ingrese su mail" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label>Número de contacto</label>
+                        <input type="number" placeholder="Ingrese su Número" required>
+                    </div>
+                    
+                    
+                    <div class="column">
+                        <div class="input-box">
+                            <label for="">Ciudad destino</label>
+                            <div class="select-box">
+                                <select name="ciudad" required>
+                                    <option value="" disabled selected>Ciudad destino</option>
+                                    <option value="">Mar del plata</option>
+                                    <option value="">Pinamar</option>
+                                    <option value="">Villa Gesell</option>
+                                    <option value="">Miramar</option>
+                                    <option value="">Mar del Tuyú</option>
+                                    <option value="">Santa Teresita</option>
+                                    <option value="">San Bernardo</option>
+                                    <option value="">Cariló</option>
+                                    <option value="">Mar de Ajó</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="">Hotel</label>
+                            <div class="select-box">
+                                <select name="hotel" required>
+                                    <option value="" disabled selected>Hotel</option>
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column">
+                        <div class="input-box">
+                        <label>Cantidad de personas</label>
+                        <div class="cant_personas_container">
+                            <button class="button-form" type="button" id="restar" onclick="actualizarNumero(-1)">-</button>
+                            <input name="cant-personas" type="number" id="numero" value="1" min="1" readonly required>
+                            <button class="button-form" type="button" id="sumar" onclick="actualizarNumero(1)">+</button>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Cantidad habitaciones</label>
+                        <div class="cant_personas_container">
+                            <button class="button-form" type="button" id="restar" onclick="actualizarNumero2(-1)">-</button>
+                            <input name="cant-habitaciones" type="number" id="numero2" value="1" min="1" readonly required>
+                            <button class="button-form" type="button" id="sumar" onclick="actualizarNumero2(1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="input-box">
+                        <label>Fecha de Entrada:</label>
+                        <input name="fecha-entrada" type="date" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Fecha de salida:</label>
+                        <input name="fecha-salida" type="date" required>
+                    </div>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+    
     <footer>
         <p>Contacto: <a href="mailto:Aterrizar@gmail.com">Aterrizar@gmail.com</a> | Teléfono: 0800-777-2354</p>
     </footer>
