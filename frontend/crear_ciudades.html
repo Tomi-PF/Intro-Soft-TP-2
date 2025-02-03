@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aterrizar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+    <div class="navbar">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                
+                <a href="index.html">
+                    <img src="img/Logo.png" alt="Logo de Aterrizar" class="logo">
+                </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+                
+                <div class="navbar-start">
+                
+                    <a href="index.html" class="navbar-item">Inicio</a>
+          
+                    <a href="alojamientos.html" class="navbar-item">Alojamientos</a>
+                    <a href="reservas.html" class="navbar-item">Reservas</a>
+                    
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="content">
+    
+        <h2>Crea ciudades</h2>
+        <p>Aquí puedes crear las ciudades</p>
+        <section class="section-form">
+            
+            <div class="contenedor-form">
+                <header>Formulario para crear ciudades</header>
+                <form class="form" action="form-reserva">
+                    
+                    <div class="input-box">
+                        <label>Nombre ciudad</label>
+                        <input id="nombre_ciudad" type="text" placeholder="Ingrese el nombre de la ciudad" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Foto de la ciudad</label>
+                        <input id="foto_ciudad" type="text" placeholder="Ingrese la URL de la foto de la ciudad" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Provincia de la ciudad</label>
+                        <input id="provincia_ciudad" type="text" placeholder="Ingrese la provincia a la que pertenece la ciudad" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Tamaño de la ciudad</label>
+                        <input id="tamaño_ciudad" type="number" placeholder="Ingrese el tamaño de la ciudad">
+                    </div>
+                    <div class="input-box">
+                        <label>Año de fundación de la ciudad</label>
+                        <input id="año_fundación" type="number" placeholder="Ingrese el año de fundación de la ciudad">
+                    </div>
+                    
+                    <div class="column">
+                        <button>Enviar</button>
+                        <button>Limpiar</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>Contacto: <a href="mailto:Aterrizar@gmail.com">Aterrizar@gmail.com</a> | Teléfono: 0800-777-2354</p>
+    </footer>
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
