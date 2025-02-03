@@ -107,6 +107,7 @@ h2 {
 }
 
 /* Estilo para las imágenes de la página de inicio (carrousel) */
+/* Carrousel de imagenes PAGINA HOME*/
 .carousel {
     position: relative;
     max-width: 600px;
@@ -150,6 +151,122 @@ button.next {
 button.prev:hover, button.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+     
+ /* FORMULARIO PAGINA RESERVAS */
+            
 
 
 
+.section-form {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    padding: 20px;
+}
+
+.contenedor-form {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-form header {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+
+}
+
+.contenedor-form .form {
+    margin-top: 30px;
+}
+
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label {
+    color: #333;
+}
+
+.form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.form .column {
+    display: flex;
+    column-gap: 15px;
+}
+
+
+.select-box select{
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #707070;
+    font-size: 1rem;   
+    border-radius: 5px;    
+}
+
+.form button {
+    height: 55px;
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.form button:hover{
+    background-color: #4c4c4c;
+}
+
+.input-box .cant_personas_container{
+    display: inline-flex;
+    align-items: center;
+}
+
+.cant_personas_container button {
+    height: 50px;
+    width: 50px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 16px;
+}
+
+.cant_personas_container input {
+    height: 50px;
+    width: 50px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 16px;
+}
+/* Responsive */
+
+@media screen and (max-width: 500px){
+.form .column{
+    flex-wrap: wrap;
+}
+}
