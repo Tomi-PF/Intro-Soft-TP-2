@@ -270,3 +270,7 @@ button.prev:hover, button.next:hover {
     flex-wrap: wrap;
 }
 }
+
+.section-form {
+    margin-bottom: 20px;
+}
