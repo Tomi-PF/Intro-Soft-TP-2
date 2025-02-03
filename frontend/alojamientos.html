@@ -32,7 +32,7 @@
 
         <a class="button is-info is-outlined" href="crear_ciudades.html">Crear ciudades</a>
 
-        <div class="columns is-multiline" id="ciudadesContainer">
+        <div class="sec_2 columns is-multiline" id="ciudadesContainer">
             <!-- Cuadrícula de imágenes dinámica -->
         </div>
 
@@ -43,7 +43,63 @@
         <p>Contacto: <a href="mailto:Aterrizar@gmail.com">Aterrizar@gmail.com</a> | Teléfono: 0800-777-2354</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const container = document.getElementById('ciudadesContainer')
+        const mensaje = document.getElementById('mensajeError')
+
+        fetch('http://localhost:3000/api/v1/ciudades/')
+        .then(response => response.json())
+        .then(ciudades => {
+
+            if (ciudades.length === 0) {
+                mensaje.innerText = "No hay ciudades disponibles."
+                return
+            }
+
+            ciudades.forEach(ciudad => {
+                
+                // Creación Nombre
+                const Nombre = document.createElement('p')
+                Nombre.setAttribute("class", "city-name")
+                Nombre.innerText = ciudad.nombre
+                // Creación del Botón para ver mas información
+                const Boton_info = document.createElement('a')
+                Boton_info.setAttribute("class", "button is-info is-outlined")
+                Boton_info.innerText = "Ver info"
+                Boton_info.style.marginBottom = "10px"
+                // Creación del Botón para borrar la ciudad
+                const Boton_borrar = document.createElement('a')
+                Boton_borrar.setAttribute("class", "button is-danger is-outlined")
+                Boton_borrar.innerText = "Borrar ciudad"
+                // Creación del Contenedor
+                const Contenedor = document.createElement('div')
+                Contenedor.setAttribute("class", "overlay")
+                // Creación de la Imagen
+                const Imagen = document.createElement('img')
+                Imagen.setAttribute("src", ciudad.foto_ciudad)
+                Imagen.setAttribute("class", "alojamiento-img")
+                // Creación de la Estructura
+                const Estructura = document.createElement('figure')
+                Estructura.setAttribute("class", "image")
+                // Creación de la Card
+                const Card = document.createElement('div')
+                Card.setAttribute("class", "card alojamiento-card")
+                // Creación de las columnas
+                const Columnas = document.createElement('div')
+                Columnas.setAttribute("class", "column is-4")
+                
+
+                Contenedor.appendChild(Nombre)
+                Contenedor.appendChild(Boton_info)
+                Contenedor.appendChild(Boton_borrar)
+                Estructura.appendChild(Imagen)
+                Estructura.appendChild(Contenedor)
+                Card.appendChild(Estructura)
+                Columnas.appendChild(Card)
+                container.appendChild(Columnas)
+            });
+        })
+    </script>
 
 </body>
 </html>
