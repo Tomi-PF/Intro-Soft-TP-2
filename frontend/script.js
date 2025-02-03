@@ -54,3 +54,37 @@ function actualizarNumero2(valor) {
       input.value = numero;
     }
   }
+
+// Muestra las ciudades disponibles en la base de datos (para /alojamientos/)
+document.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById('ciudadesContainer')
+  const mensaje = document.getElementById('mensajeError')
+
+  try {
+    const response = await fetch('http://localhost:3000/api/v1/ciudades')
+    
+    const ciudades = await response.json()
+
+    if (ciudades.length === 0) {
+      mensaje.textContent = "No hay ciudades disponibles."
+      return
+    }
+
+    container.innerHTML = ciudades.map(ciudad => `
+      <div class="column is-4">
+        <div class="card alojamiento-card">
+          <figure class="image">
+            <img src="${ciudad.foto_ciudad}" alt="${ciudad.nombre}" class="alojamiento-img">
+            <div class="overlay">
+              <p class="city-name">${ciudad.nombre}</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+    `).join('');
+
+  } catch (error) {
+    console.error(error)
+    mensaje.textContent = "Error al cargar las ciudades disponibles. Intente de nuevo más tarde."
+  }
+})
