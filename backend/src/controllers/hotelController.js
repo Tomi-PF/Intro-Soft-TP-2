@@ -31,13 +31,14 @@ const getHotel = async (req, res) => {
         ciudad: true // Trae datos de la ciudad del hotel
       }
     })
-    res.json(hotel)
 
     if(hotel === null) {
       res.status(404).json({
         error: "Hotel no encontrado"
       })
+      return
     }
+    res.json(hotel)
 
   } catch (error) {
     res.status(500).json({

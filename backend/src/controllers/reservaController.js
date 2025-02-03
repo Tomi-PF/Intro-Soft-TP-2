@@ -33,13 +33,14 @@ const getReserva = async (req, res) => {
         hotel: true // Trae datos del hotel
       }
     })
-    res.json(reserva)
 
     if(reserva === null) {
       res.status(404).json({
         error: "Reserva no encontrada"
       })
+      return
     }
+    res.json(reserva)
 
   } catch (error) {
     res.status(500).json({

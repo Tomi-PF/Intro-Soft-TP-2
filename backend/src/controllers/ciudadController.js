@@ -24,13 +24,14 @@ const getCiudad = async (req, res) => {
         id: parseInt(id)
       }
     })
-    res.json(ciudad)
 
     if(ciudad === null) {
       res.status(404).json({
         error: "Ciudad no encontrada"
       })
+      return
     }
+    res.json(ciudad)
 
   } catch (error) {
     res.status(500).json({
