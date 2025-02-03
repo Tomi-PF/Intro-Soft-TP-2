@@ -6,7 +6,6 @@
     <title>Alojamientos - Aterrizar</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="CRUD_ciudades.js"></script>
 </head>
 <body>
 
@@ -45,7 +44,7 @@
     </footer>
 
     <script>
-        function crear_frente() {
+        function crear_card_hotel() {
             const container = document.getElementById('ciudadesContainer')
             const mensaje = document.getElementById('mensajeError')
 
@@ -69,7 +68,9 @@
                     Boton_info.setAttribute("class", "button is-info is-outlined")
                     Boton_info.innerText = "Ver info"
                     Boton_info.style.marginBottom = "10px"
-                   
+                    Boton_info.addEventListener('click', () => {
+                        Boton_info.href = `info_hoteles.html?id=${ciudad.id}`
+                    })
                     // Creación del Botón para borrar la ciudad
                     const Boton_borrar = document.createElement('a')
                     Boton_borrar.setAttribute("class", "button is-danger is-outlined")
@@ -118,11 +119,11 @@
             .then(ciudad => {
                 alert(`La ciudad ${ciudad.nombre} ha sido borrada`)
                 container.innerText = ''
-                crear_frente()
+                crear_card_hotel()
             })
         }
         
-        crear_frente()
+        crear_card_hotel()
     </script>
 
 </body>
