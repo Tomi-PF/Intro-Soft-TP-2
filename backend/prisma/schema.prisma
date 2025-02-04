@@ -27,15 +27,17 @@ model Ciudad {
 }
 
 model Hotel {
-  id           Int     @id @default(autoincrement())
-  nombre       String
-  foto_hotel   String
-  ciudad       Ciudad  @relation(fields: [id_ciudad], references: [id])
-  id_ciudad    Int
-  calificacion Decimal @default(0)
-  calle        String
-  num_calle    Int     @default(0)
-  telefono     Int     @default(0)
+  id                Int    @id @default(autoincrement())
+  nombre            String
+  foto_hotel        String
+  ciudad            Ciudad @relation(fields: [id_ciudad], references: [id])
+  id_ciudad         Int
+  cant_estrellas    Int
+  cant_habitaciones Int
+  precio_noche      Int
+  calle             String
+  num_calle         Int    @default(0)
+  telefono          Int    @default(0)
 
   Reserva Reserva[]
 }
