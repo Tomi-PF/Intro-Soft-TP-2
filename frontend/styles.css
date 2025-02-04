@@ -277,3 +277,20 @@ button.prev:hover, button.next:hover {
 .section-form {
     margin-bottom: 20px;
 }
+
+#foto-ciudad {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.is-primary {
+    margin-right: 20px;
+}
+
+#datos-ciudad {
+    width: 400px;
+    margin-left: 35px;
+}

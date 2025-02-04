@@ -65,11 +65,11 @@
                     Nombre.innerText = ciudad.nombre
                     // Creación del Botón para ver mas información
                     const Boton_info = document.createElement('a')
-                    Boton_info.setAttribute("class", "button is-info is-outlined")
+                    Boton_info.setAttribute("class", "button is-primary is-outlined")
                     Boton_info.innerText = "Ver info"
                     Boton_info.style.marginBottom = "10px"
                     Boton_info.addEventListener('click', () => {
-                        Boton_info.href = `info_hoteles.html?id=${ciudad.id}`
+                        Boton_info.href = `info_ciudad.html?id=${ciudad.id}`
                     })
                     // Creación del Botón para borrar la ciudad
                     const Boton_borrar = document.createElement('a')
