@@ -23,7 +23,7 @@ const getHotel = async (req, res) => {
   const { id } = req.params
 
   try {
-    const ciudad = await prisma.hotel.findUnique({
+    const hotel = await prisma.hotel.findUnique({
       where: {
         id: parseInt(id)
       },
