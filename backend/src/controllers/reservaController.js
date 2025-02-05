@@ -33,13 +33,14 @@ const getReserva = async (req, res) => {
         hotel: true // Trae datos del hotel
       }
     })
-    res.json(reserva)
 
     if(reserva === null) {
       res.status(404).json({
         error: "Reserva no encontrada"
       })
     }
+
+    res.json(reserva)
 
   } catch (error) {
     res.status(500).json({
@@ -50,9 +51,9 @@ const getReserva = async (req, res) => {
 
 //Falta verificar q el hotel y la ciudad coincidan
 const createReserva = async (req, res) => {
-  const { nombre_reserva, id_ciudad, id_hotel, cant_personas, cant_habitaciones, fecha_ingreso, fecha_salida } = req.body
+  const { nombre_completo, email, numero_contacto, ciudad, id_ciudad, hotel, id_hotel, cant_personas, cant_habitaciones, fecha_ingreso, fecha_salida } = req.body
 
-  if (!nombre_reserva || !id_ciudad || !id_hotel) {
+  if (!nombre_completo || !id_ciudad || !id_hotel) {
     return res.status(400).json({ error: "Los campos nombre, ID de ciudad e ID de hotel son requeridos" })
   }
 
@@ -83,7 +84,9 @@ const createReserva = async (req, res) => {
 
     const nuevaReserva = await prisma.reserva.create({
       data: {
-        nombre_reserva,
+        nombre_completo,
+        email,
+        numero_contacto,
         id_ciudad: parseInt(id_ciudad),
         id_hotel: parseInt(id_hotel),
         cant_personas: parseInt(cant_personas), 
@@ -108,7 +111,7 @@ const createReserva = async (req, res) => {
 // Solo modifica lo que se ponga en el body, lo demás no
 const updateReserva = async (req, res) => {
   const { id } = req.params
-  const { nombre_reserva, id_ciudad, id_hotel, cant_personas, cant_habitaciones, fecha_ingreso, fecha_salida } = req.body
+  const { nombre_completo, email, numero_contacto, ciudad, id_ciudad, hotel, id_hotel, cant_personas, cant_habitaciones, fecha_ingreso, fecha_salida } = req.body
 
   try {
     const reservaUpdated = await prisma.reserva.update({
@@ -116,13 +119,15 @@ const updateReserva = async (req, res) => {
         id: parseInt(id)
       },
       data: {
-        nombre_reserva,
-        id_ciudad,
-        id_hotel,
-        cant_personas,
-        cant_habitaciones,
-        fecha_ingreso,
-        fecha_salida
+        nombre_completo,
+        email,
+        numero_contacto,
+        id_ciudad: parseInt(id_ciudad),
+        id_hotel: parseInt(id_hotel),
+        cant_personas: parseInt(cant_personas), 
+        cant_habitaciones: parseInt(cant_habitaciones),
+        fecha_ingreso: fecha_ingreso,
+        fecha_salida: fecha_salida
       },
       include: {
         ciudad: true, // Trae datos de la ciudad del hotel

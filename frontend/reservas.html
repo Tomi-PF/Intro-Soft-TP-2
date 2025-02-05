@@ -49,21 +49,21 @@
             
             <div class="contenedor-form">
                 <header>Formulario de reserva</header>
-                <form class="form" action="form-reserva">
+                <form class="form" id="formReserva" action="form-reserva">
                     
                     <div class="input-box">
                         <label>Nombre completo</label>
-                        <input type="text" placeholder="Ingrese su nombre completo" required>
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre completo" required>
                     </div>
                     
                     <div class="input-box">
                         <label>Mail</label>
-                        <input type="email" placeholder="Ingrese su mail" required>
+                        <input type="email" name="email" id="email" placeholder="Ingrese su mail" required>
                     </div>
                     
                     <div class="input-box">
                         <label>Número de contacto</label>
-                        <input type="number" placeholder="Ingrese su Número" required>
+                        <input type="number" name="numContacto" id="numContacto" placeholder="Ingrese su Número" required>
                     </div>
                     
                     
@@ -108,7 +108,7 @@
                 <div class="column">
                     <div class="input-box">
                         <label>Fecha de Entrada:</label>
-                        <input name="fecha-entrada" type="date" required>
+                        <input name="fecha-entrada" id="fecha-entrada" type="date" required>
                     </div>
                     <div class="input-box">
                         <label>Fecha de salida:</label>
@@ -141,7 +141,7 @@
                
                         const ciudad_opcion = document.createElement('option')
                         ciudad_opcion.innerText = ciudad.nombre
-                        ciudad_opcion.value = ciudad.nombre
+                        ciudad_opcion.value = ciudad.id
                         opciones_ciudad.appendChild(ciudad_opcion)
 
                     })
