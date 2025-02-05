@@ -294,3 +294,46 @@ button.prev:hover, button.next:hover {
     width: 400px;
     margin-left: 35px;
 }
+
+
+/* INICIO DESCRIPCION */
+
+.descripcion {
+    max-width: 800px;
+    margin: 50px auto; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+    transition: all 0.3s ease-in-out;
+}
+
+.descripcion:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.descripcion h1 {
+    font-size: 28px;
+    color: #0073e6; 
+    margin-bottom: 15px;
+}
+
+.descripcion p {
+    font-size: 18px;
+    line-height: 1.6; 
+    color: white;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.descripcion b {
+    color: skyblue;
+}
+
+.descripcion p:last-child {
+    font-weight: bold;
+    font-size: 20px;
+    color: #0073e6;
+    margin-top: 15px;
+}
