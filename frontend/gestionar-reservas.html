@@ -115,8 +115,10 @@
 
             modal.style.display = 'flex'
 
-            document.getElementById('modal-titulo').textContent = `Reserva #${reserva.id}`
+            // Número de reserva
+            document.getElementById('modal-titulo').innerHTML = `<strong>Reserva #${reserva.id}</strong>`
             
+            // Detalles de la reserva
             document.getElementById('modal-info').innerHTML = `
                 <p><strong>Email:</strong> ${reserva.email}</p>
                 <p><strong>Contacto:</strong> ${reserva.numero_contacto}</p>
@@ -125,8 +127,39 @@
                 <p><strong>Fecha de ingreso:</strong> ${reserva.fecha_ingreso}</p>
                 <p><strong>Fecha de salida:</strong> ${reserva.fecha_salida}</p>
             `
-
         }
+
+        // Botones del modal
+        // Cerrar modal
+        document.querySelector('.close-modal').addEventListener('click', () => {
+            document.getElementById('modal-reserva').style.display = 'none'
+        })
+
+        // Editar reserva
+        document.getElementById('button-editar').addEventListener('click', () => {
+            window.location.href = `editar-reserva.html?id=${reservaSeleccionada.id}`
+        })
+
+        // Eliminar reserva
+        document.getElementById('button-eliminar').addEventListener('click', async () => {
+            if (confirm('¿Estás seguro de eliminar esta reserva?')) {
+                try {
+                    const response = await fetch(`http://localhost:3000/api/v1/reservas/${reservaSeleccionada.id}`, {
+                        method: 'DELETE'
+                    })
+                    
+                    if (response.ok) {
+                        alert('Reserva eliminada')
+                        document.getElementById('modal-reserva').style.display = 'none'
+                        await cargarReservas()
+                    }
+
+                } catch (error) {
+                    console.error('Error:', error)
+                    alert('Error al eliminar reserva')
+                }
+            }
+        })
 
     </script>
 </body>
