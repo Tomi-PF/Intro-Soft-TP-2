@@ -31,13 +31,43 @@ const getHotel = async (req, res) => {
         ciudad: true // Trae datos de la ciudad del hotel
       }
     })
-    res.json(hotel)
 
     if(hotel === null) {
       res.status(404).json({
         error: "Hotel no encontrado"
       })
+      return
     }
+    res.json(hotel)
+
+  } catch (error) {
+    res.status(500).json({
+      error: "Error al buscar ciudad"
+    })
+  }
+}
+
+// Busca hotel según la ciudad
+const getHotelbyCiudad = async (req, res) => {
+  const { name, id } = req.params
+
+  try {
+    const hoteles = await prisma.hotel.findMany({
+      where: {
+        id_ciudad: parseInt(id)
+      },
+      include: {
+        ciudad: true // Trae datos de la ciudad del hotel
+      }
+    })
+
+    if(hoteles === null) {
+      res.status(404).json({
+        error: "Hotel no encontrado"
+      })
+      return
+    }
+    res.json(hoteles)
 
   } catch (error) {
     res.status(500).json({
@@ -142,6 +172,7 @@ const deleteHotel = async (req, res) => {
 module.exports = {
     getAllHoteles,
     getHotel,
+    getHotelbyCiudad,
     createHotel,
     updateHotel,
     deleteHotel
