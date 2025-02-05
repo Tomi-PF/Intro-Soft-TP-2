@@ -108,6 +108,7 @@ button.prev:hover, button.next:hover {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
 .contenedor-form header {
@@ -197,6 +198,28 @@ button.prev:hover, button.next:hover {
     margin: 0 5px;
     font-size: 16px;
 }
+
+.button-gestionar {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    background-color: #000000;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 400;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.button-gestionar:hover {
+    background-color: #4c4c4c;
+}
+
 /* Responsive */
 
 @media screen and (max-width: 500px){
