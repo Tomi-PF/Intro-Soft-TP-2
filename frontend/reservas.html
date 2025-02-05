@@ -71,28 +71,16 @@
                         <div class="input-box">
                             <label for="">Ciudad destino</label>
                             <div class="select-box">
-                                <select name="ciudad" required>
+                                <select id="seleccionar-ciudad" name="ciudad" required>
                                     <option value="" disabled selected>Ciudad destino</option>
-                                    <option value="">Mar del plata</option>
-                                    <option value="">Pinamar</option>
-                                    <option value="">Villa Gesell</option>
-                                    <option value="">Miramar</option>
-                                    <option value="">Mar del Tuyú</option>
-                                    <option value="">Santa Teresita</option>
-                                    <option value="">San Bernardo</option>
-                                    <option value="">Cariló</option>
-                                    <option value="">Mar de Ajó</option>
                                 </select>
                             </div>
                         </div>
                         <div class="input-box">
                             <label for="">Hotel</label>
                             <div class="select-box">
-                                <select name="hotel" required>
+                                <select id="seleccionar-hotel" name="hotel" required>
                                     <option value="" disabled selected>Hotel</option>
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
                                 </select>
                             </div>
                         </div>
@@ -136,7 +124,67 @@
         <p>Contacto: <a href="mailto:Aterrizar@gmail.com">Aterrizar@gmail.com</a> | Teléfono: 0800-777-2354</p>
     </footer>
     
-    <script src="script.js"></script>
+    <script>
+
+        function datos_ciudades(opcion) {
+
+            const opciones_ciudad = document.getElementById('seleccionar-ciudad')
+            const opciones_hotel = document.getElementById('seleccionar-hotel')
+
+            fetch('http://localhost:3000/api/v1/ciudades/')
+            .then(response => response.json())
+            .then(ciudades => {
+
+                if (opcion == "Crear opciones ciudades"){
+                    
+                    ciudades.forEach(ciudad => {
+               
+                        const ciudad_opcion = document.createElement('option')
+                        ciudad_opcion.innerText = ciudad.nombre
+                        ciudad_opcion.value = ciudad.nombre
+                        opciones_ciudad.appendChild(ciudad_opcion)
+
+                    })
+
+                } else if(opcion == "Crear opciones hoteles") {
+
+                    opciones_ciudad.addEventListener('change', () => {
+
+                        const opcion_elegida_ciudad = opciones_ciudad.value
+                        let id_ciudad = ""
+                        opciones_hotel.innerText = ''
+
+                        ciudades.forEach(ciudad => {
+                            if(ciudad.nombre == opcion_elegida_ciudad) {
+
+                                id_ciudad = parseInt(ciudad.id)
+
+                            }
+                        });
+
+                        fetch('http://localhost:3000/api/v1/hoteles/' + opcion_elegida_ciudad + '/' + id_ciudad)
+                        .then(response => response.json())
+                        .then(hoteles => {
+                            
+                            hoteles.forEach(hotel => {
+                                
+                                const hotel_opcion = document.createElement('option')
+                                hotel_opcion.innerText = hotel.nombre
+                                hotel_opcion.value = hotel.nombre
+                                opciones_hotel.appendChild(hotel_opcion)
+
+                            });
+                        })
+                    })
+                }
+            })
+        }
+
+
+        datos_ciudades("Crear opciones ciudades")
+        datos_ciudades("Crear opciones hoteles")
+
+    </script>
     
 </body>
 </html>
