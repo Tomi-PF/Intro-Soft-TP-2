@@ -77,7 +77,7 @@ const getHotelbyCiudad = async (req, res) => {
 }
 
 const createHotel = async (req, res) => {
-  const { nombre, foto_hotel, id_ciudad, calificacion, calle, num_calle, telefono } = req.body
+  const { nombre, foto_hotel, id_ciudad, cant_estrellas, cant_habitaciones, precio_noche, calle, num_calle, telefono } = req.body
 
   if (!nombre || !id_ciudad) {
     return res.status(400).json({ error: "Los campos nombre e ID de ciudad son requeridos" })
@@ -101,7 +101,9 @@ const createHotel = async (req, res) => {
         nombre,
         foto_hotel: foto_hotel || "default.jpg", // Cambiar a ruta default
         id_ciudad: parseInt(id_ciudad),
-        calificacion: new Prisma.Decimal(calificacion), // Conversión a decimal
+        cant_estrellas: parseInt(cant_estrellas), // Conversión a decimal
+        cant_habitaciones: parseInt(cant_habitaciones),
+        precio_noche: parseInt(precio_noche),
         calle: calle || "Sin dirección", // por default sin dirección
         num_calle: parseInt(num_calle),
         telefono: parseInt(telefono)
