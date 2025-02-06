@@ -8,7 +8,7 @@ Nuestra **página** consta de **3 pestañas**:
 
 2) En ***pestaña alojamientos***, se pueden visualizar en forma de tarjeta las ciudades a las cuales se puede reservar un viaje, en cada tarjeta se encuentra el nombre de la ciudad con su foto y 2 botones uno para borrar dicha ciudad y otro para entrar a ver mas información de la ciudad. Ademas se encuentra un botón para crear una nueva ciudad. Una vez se entra a una ciudad en específico, se puede obtener información de dicho lugar y hay botón para editar datos de la ciudad en específico. Además se cuenta con 2 botones uno para ver los hoteles que pertenecen a esa ciudad y otro para crear hoteles que pertenezcan a esa ciudad. Dentro de ver los hoteles de una ciudad, estos están presentes en formas de tarjetas que tienen 2 botones, uno para editar la información del hotel y otro para borrarlo.
 
-3) En la ***pestaña reservas*** se encuentra un formulario, para completar y realizar una reserva donde se puede seleccionar una ciudad y un hotel, para completar y realizar una reserva. Además cuenta con un botón para gestionar las reservas en donde en forma de tarjetas aparecen todas las reservas hecha. En caso de seleccionar 1, se amplía para ver mas información y cuenta con 2 botones, uno para borrar la reserva y otro para editarla.
+3) En la ***pestaña reservas*** se encuentra un formulario, para completar y realizar una reserva donde se puede seleccionar una ciudad y un hotel, para completar y realizar una reserva. Además cuenta con un botón para gestionar las reservas en donde en forma de tarjetas aparecen todas las reservas hechas. En caso de seleccionar una, se amplía para ver mas información y cuenta con 2 botones, uno para borrar la reserva y otro para editarla.
 
 # *Forma local de uso*
 
