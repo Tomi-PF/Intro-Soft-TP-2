@@ -92,11 +92,12 @@ button.prev:hover, button.next:hover {
             
 
 .section-reservas {
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     background-color: black;
     padding: 20px;
+    height: auto;
+    min-height: auto;
 }
 
 .contenedor-form {
@@ -107,7 +108,6 @@ button.prev:hover, button.next:hover {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
 }
 
 .contenedor-form header {
