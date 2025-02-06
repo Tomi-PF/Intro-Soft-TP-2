@@ -23,7 +23,7 @@ const getHotel = async (req, res) => {
   const { id } = req.params
 
   try {
-    const ciudad = await prisma.hotel.findUnique({
+    const hotel = await prisma.hotel.findUnique({
       where: {
         id: parseInt(id)
       },
@@ -31,13 +31,43 @@ const getHotel = async (req, res) => {
         ciudad: true // Trae datos de la ciudad del hotel
       }
     })
-    res.json(hotel)
 
     if(hotel === null) {
       res.status(404).json({
         error: "Hotel no encontrado"
       })
+      return
     }
+    res.json(hotel)
+
+  } catch (error) {
+    res.status(500).json({
+      error: "Error al buscar ciudad"
+    })
+  }
+}
+
+// Busca hotel según la ciudad
+const getHotelbyCiudad = async (req, res) => {
+  const { name, id } = req.params
+
+  try {
+    const hoteles = await prisma.hotel.findMany({
+      where: {
+        id_ciudad: parseInt(id)
+      },
+      include: {
+        ciudad: true // Trae datos de la ciudad del hotel
+      }
+    })
+
+    if(hoteles === null) {
+      res.status(404).json({
+        error: "Hotel no encontrado"
+      })
+      return
+    }
+    res.json(hoteles)
 
   } catch (error) {
     res.status(500).json({
@@ -47,7 +77,7 @@ const getHotel = async (req, res) => {
 }
 
 const createHotel = async (req, res) => {
-  const { nombre, foto_hotel, id_ciudad, calificacion, calle, num_calle, telefono } = req.body
+  const { nombre, foto_hotel, id_ciudad, cant_estrellas, cant_habitaciones, precio_noche, calle, num_calle, telefono } = req.body
 
   if (!nombre || !id_ciudad) {
     return res.status(400).json({ error: "Los campos nombre e ID de ciudad son requeridos" })
@@ -71,7 +101,9 @@ const createHotel = async (req, res) => {
         nombre,
         foto_hotel: foto_hotel || "default.jpg", // Cambiar a ruta default
         id_ciudad: parseInt(id_ciudad),
-        calificacion: new Prisma.Decimal(calificacion), // Conversión a decimal
+        cant_estrellas: parseInt(cant_estrellas), // Conversión a decimal
+        cant_habitaciones: parseInt(cant_habitaciones),
+        precio_noche: parseInt(precio_noche),
         calle: calle || "Sin dirección", // por default sin dirección
         num_calle: parseInt(num_calle),
         telefono: parseInt(telefono)
@@ -142,6 +174,7 @@ const deleteHotel = async (req, res) => {
 module.exports = {
     getAllHoteles,
     getHotel,
+    getHotelbyCiudad,
     createHotel,
     updateHotel,
     deleteHotel

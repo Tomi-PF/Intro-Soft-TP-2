@@ -45,25 +45,25 @@
     </div>
         
         
-        <section class="section-form">
+        <section class="section-reservas">
             
             <div class="contenedor-form">
                 <header>Formulario de reserva</header>
-                <form class="form" action="form-reserva">
+                <form class="form" id="formReserva" action="form-reserva">
                     
                     <div class="input-box">
                         <label>Nombre completo</label>
-                        <input type="text" placeholder="Ingrese su nombre completo" required>
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre completo" required>
                     </div>
                     
                     <div class="input-box">
                         <label>Mail</label>
-                        <input type="email" placeholder="Ingrese su mail" required>
+                        <input type="email" name="email" id="email" placeholder="Ingrese su mail" required>
                     </div>
                     
                     <div class="input-box">
                         <label>Número de contacto</label>
-                        <input type="number" placeholder="Ingrese su Número" required>
+                        <input type="number" name="numContacto" id="numContacto" placeholder="Ingrese su Número" required>
                     </div>
                     
                     
@@ -71,28 +71,16 @@
                         <div class="input-box">
                             <label for="">Ciudad destino</label>
                             <div class="select-box">
-                                <select name="ciudad" required>
+                                <select id="seleccionar-ciudad" name="ciudad" required>
                                     <option value="" disabled selected>Ciudad destino</option>
-                                    <option value="">Mar del plata</option>
-                                    <option value="">Pinamar</option>
-                                    <option value="">Villa Gesell</option>
-                                    <option value="">Miramar</option>
-                                    <option value="">Mar del Tuyú</option>
-                                    <option value="">Santa Teresita</option>
-                                    <option value="">San Bernardo</option>
-                                    <option value="">Cariló</option>
-                                    <option value="">Mar de Ajó</option>
                                 </select>
                             </div>
                         </div>
                         <div class="input-box">
                             <label for="">Hotel</label>
                             <div class="select-box">
-                                <select name="hotel" required>
+                                <select id="seleccionar-hotel" name="hotel" required>
                                     <option value="" disabled selected>Hotel</option>
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
                                 </select>
                             </div>
                         </div>
@@ -120,23 +108,155 @@
                 <div class="column">
                     <div class="input-box">
                         <label>Fecha de Entrada:</label>
-                        <input name="fecha-entrada" type="date" required>
+                        <input name="fecha-entrada" id="fecha-entrada" type="date" required>
                     </div>
                     <div class="input-box">
                         <label>Fecha de salida:</label>
-                        <input name="fecha-salida" type="date" required>
+                        <input name="fecha-salida" id="fecha-salida" type="date" required>
                     </div>
                 </div>
                 <button type="submit">Enviar</button>
             </form>
+
+            <hr class="divider">
+
+            <button class="button-gestionar" onclick="window.location.href='gestionar-reservas.html'">Gestionar reservas</button>
         </div>
-    </section>
+
+        </section>
+    
     
     <footer>
         <p>Contacto: <a href="mailto:Aterrizar@gmail.com">Aterrizar@gmail.com</a> | Teléfono: 0800-777-2354</p>
     </footer>
     
-    <script src="script.js"></script>
+    <script>
+
+        function datos_ciudades(opcion) {
+
+            const opciones_ciudad = document.getElementById('seleccionar-ciudad')
+            const opciones_hotel = document.getElementById('seleccionar-hotel')
+
+            fetch('http://localhost:3000/api/v1/ciudades/')
+            .then(response => response.json())
+            .then(ciudades => {
+
+                if (opcion == "Crear opciones ciudades"){
+                    
+                    ciudades.forEach(ciudad => {
+               
+                        const ciudad_opcion = document.createElement('option')
+                        ciudad_opcion.innerText = ciudad.nombre
+                        ciudad_opcion.value = ciudad.id
+                        opciones_ciudad.appendChild(ciudad_opcion)
+
+                    })
+
+                } else if(opcion == "Crear opciones hoteles") {
+
+                    opciones_ciudad.addEventListener('change', () => {
+
+                        const opcion_elegida_ciudad = opciones_ciudad.options[opciones_ciudad.selectedIndex]
+                        const nombreCiudad = opcion_elegida_ciudad.innerText
+                        const id_ciudad = opcion_elegida_ciudad.value
+                        opciones_hotel.innerText = ''
+
+                        fetch('http://localhost:3000/api/v1/hoteles/' + encodeURIComponent(nombreCiudad) + '/' + id_ciudad)
+                        .then(response => response.json())
+                        .then(hoteles => {
+                            
+                            hoteles.forEach(hotel => {
+                                
+                                const hotel_opcion = document.createElement('option')
+                                hotel_opcion.innerText = hotel.nombre
+                                hotel_opcion.value = hotel.id
+                                opciones_hotel.appendChild(hotel_opcion)
+
+                            })
+                        })
+                    })
+                }
+            })
+        }
+
+        // Enviar formulario de reservas al backend
+        document.addEventListener('DOMContentLoaded', () => {
+        // Selecciona el form
+        const formReserva = document.getElementById('formReserva')
+
+        // Al apretar en submit
+        formReserva.addEventListener('submit', (event) => {
+            event.preventDefault()
+
+            // Recopila los valores ingresados en cada campo
+            const nombre = document.getElementById('nombre').value.trim()
+            const email = document.getElementById('email').value.trim()
+            const numContacto = document.getElementById('numContacto').value.trim()
+
+            const ciudadSelect = document.getElementById('seleccionar-ciudad')
+            const hotelSelect = document.getElementById('seleccionar-hotel')
+            const ciudadId = ciudadSelect.value; 
+            const hotelId = hotelSelect.value;
+
+            const cantPersonas = document.getElementById('numero').value
+            const cantHabitaciones = document.getElementById('numero2').value
+            const fechaIngreso = document.getElementById('fecha-entrada').value
+            const fechaSalida = document.getElementById('fecha-salida').value
+        
+            const datosReserva = {
+            nombre_completo: nombre,
+            email: email,
+            numero_contacto: parseInt(numContacto, 10),
+            id_ciudad: parseInt(ciudadId, 10),
+            id_hotel: parseInt(hotelId, 10),
+            cant_personas: parseInt(cantPersonas, 10),
+            cant_habitaciones: parseInt(cantHabitaciones, 10),
+            fecha_ingreso: fechaIngreso,
+            fecha_salida: fechaSalida
+            }
+
+            fetch('http://localhost:3000/api/v1/reservas', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datosReserva)
+            })
+            
+            .then(response => {
+
+            // Si la respuesta es distinta de 201, se procesa el error
+            if (!response.ok) {
+                
+                return response.json().then(errorData => {
+                throw new Error(errorData.error || 'Error al crear la reserva')
+                })
+
+            }
+            return response.json()
+            })
+
+            .then( data => {
+            console.log('Reserva creada:', data)
+            alert('Reserva creada con éxito')
+
+            formReserva.reset() // Se resetea el form
+            })
+            
+            .catch( error => {
+            console.error('Error al crear la reserva:', error)
+            alert('Hubo un error al crear la reserva: ' + error.message)
+            })
+
+        })
+        })
+
+        datos_ciudades("Crear opciones ciudades")
+        datos_ciudades("Crear opciones hoteles")
+
+    </script>
     
+    <script src="script.js"></script>
+
 </body>
 </html>
