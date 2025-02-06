@@ -70,6 +70,29 @@ const getHotelesbyCiudad = async (req, res) => {
   }
 }
 
+// Busca hotel según el nombre
+const getHotelbyNombre = async (req, res) => {
+  const { nombre_hotel } = req.params
+
+  try {
+    const hotel = await prisma.hotel.findFirst({
+      where: {
+        nombre: nombre_hotel
+      },
+      include: {
+        ciudad: true // Trae datos de la ciudad del hotel
+      }
+    })
+
+    res.send(hotel)
+
+  } catch (error) {
+    res.status(500).json({
+      error: "Error al buscar ciudad"
+    })
+  }
+}
+
 const createHotel = async (req, res) => {
   const { nombre, foto_hotel, id_ciudad, calificacion, calle, num_calle, telefono } = req.body
 
@@ -167,6 +190,7 @@ module.exports = {
     getAllHoteles,
     getHotel,
     getHotelesbyCiudad,
+    getHotelbyNombre,
     createHotel,
     updateHotel,
     deleteHotel
