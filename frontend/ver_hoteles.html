@@ -68,6 +68,13 @@
                     const Nombre = document.createElement('p')
                     Nombre.setAttribute("class", "city-name")
                     Nombre.innerText = hotel.nombre
+                    // Creación del Botón modificar
+                    const Boton_modificar = document.createElement('a')
+                    Boton_modificar.setAttribute("class", "button is-primary is-outlined")
+                    Boton_modificar.innerText = "Modificar"
+                    Boton_modificar.addEventListener('click', () => {
+                        Boton_modificar.href = `modificar_hotel.html?nombre=${hotel.nombre}?id=${ciudadId}`
+                    })
                     // Creación del Botón para borrar el hotel
                     const Boton_borrar = document.createElement('a')
                     Boton_borrar.setAttribute("class", "button is-danger is-outlined")
