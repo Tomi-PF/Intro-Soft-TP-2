@@ -102,7 +102,7 @@
             document.getElementById('telefono').value = '';
         }
 
-        function enviar_datos(event){
+        function enviar_datos(){
             event.preventDefault();
 
             const nombre_hotel = document.getElementById('nombre_hotel').value;
@@ -127,7 +127,7 @@
                 telefono: parseInt(telefono)
             };
 
-            fetch('http://localhost:3000/api/v1/hoteles', {
+            fetch('http://localhost:3000/api/v1/hoteles/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
