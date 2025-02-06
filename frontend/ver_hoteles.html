@@ -30,9 +30,9 @@
         <h2>Alojamientos</h2>
         <p>Aquí puedes encontrar los mejores alojamientos de Argentina</p>
 
-        <a class="button is-info is-outlined" href="crear_ciudades.html">Crear ciudades</a>
+        <a class="button is-info is-outlined" href="alojamientos.html">Volver</a>
 
-        <div class="columns is-multiline" id="ciudadesContainer">
+        <div class="columns is-multiline" id="hotelesContainer">
             <!-- Cuadrícula de imágenes dinámica -->
         </div>
 
@@ -44,46 +44,50 @@
     </footer>
 
     <script>
-        function crear_card_ciudad() {
-            const container = document.getElementById('ciudadesContainer')
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const ciudadId = urlParams.get('id');
+
+        function crear_card_hotel() {
+            const container = document.getElementById('hotelesContainer')
             const mensaje = document.getElementById('mensajeError')
 
-            fetch('http://localhost:3000/api/v1/ciudades/')
+            fetch('http://localhost:3000/api/v1/hoteles/' + parseInt(ciudadId) + '/hoteles' )
             .then(response => response.json())
-            .then(ciudades => {
-
-                if (ciudades.length === 0) {
-                    mensaje.innerText = "No hay ciudades disponibles."
+            .then(hoteles => {
+                 
+                console.log(hoteles)
+                if (hoteles.length === 0) {
+                    mensaje.innerText = "No hay hoteles disponibles."
                     return
                 }
 
-                ciudades.forEach(ciudad => {
+                hoteles.forEach(hotel => {
                     
                     // Creación Nombre
                     const Nombre = document.createElement('p')
                     Nombre.setAttribute("class", "city-name")
-                    Nombre.innerText = ciudad.nombre
-                    // Creación del Botón para ver mas información
-                    const Boton_info = document.createElement('a')
-                    Boton_info.setAttribute("class", "button is-primary is-outlined")
-                    Boton_info.innerText = "Ver info"
-                    Boton_info.style.marginBottom = "10px"
-                    Boton_info.addEventListener('click', () => {
-                        Boton_info.href = `info_ciudad.html?id=${ciudad.id}`
+                    Nombre.innerText = hotel.nombre
+                    // Creación del Botón modificar
+                    const Boton_modificar = document.createElement('a')
+                    Boton_modificar.setAttribute("class", "button is-primary is-outlined")
+                    Boton_modificar.innerText = "Modificar"
+                    Boton_modificar.addEventListener('click', () => {
+                        Boton_modificar.href = `modificar_hotel.html?nombre=${hotel.nombre}?id=${ciudadId}`
                     })
-                    // Creación del Botón para borrar la ciudad
+                    // Creación del Botón para borrar el hotel
                     const Boton_borrar = document.createElement('a')
                     Boton_borrar.setAttribute("class", "button is-danger is-outlined")
                     Boton_borrar.innerText = "Borrar ciudad"
                     Boton_borrar.addEventListener('click', () => {
-                        borrar_ciudad(ciudad.id)
+                        borrar_ciudad(hotel.id)
                     })
                     // Creación del Contenedor
                     const Contenedor = document.createElement('div')
                     Contenedor.setAttribute("class", "overlay")
                     // Creación de la Imagen
                     const Imagen = document.createElement('img')
-                    Imagen.setAttribute("src", ciudad.foto_ciudad)
+                    Imagen.setAttribute("src", hotel.foto_hotel)
                     Imagen.setAttribute("class", "alojamiento-img")
                     // Creación de la Estructura
                     const Estructura = document.createElement('figure')
@@ -110,20 +114,20 @@
 
         function borrar_ciudad(id) {
 
-            const container = document.getElementById('ciudadesContainer')
+            const container = document.getElementById('hotelesContainer')
 
-            fetch('http://localhost:3000/api/v1/ciudades/' + id, {
+            fetch('http://localhost:3000/api/v1/hoteles/' + id, {
                 method: 'DELETE'
             })
             .then(response => response.json())
-            .then(ciudad => {
-                alert(`La ciudad ${ciudad.nombre} ha sido borrada`)
+            .then(hotel => {
+                alert(`El hotel ${hotel.nombre} ha sido borrado`)
                 container.innerText = ''
-                crear_card_ciudad()
+                crear_card_hotel()
             })
         }
         
-        crear_card_ciudad()
+        crear_card_hotel()
     </script>
 
 </body>

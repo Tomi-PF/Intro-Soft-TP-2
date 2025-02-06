@@ -24,13 +24,14 @@ const getCiudad = async (req, res) => {
         id: parseInt(id)
       }
     })
-    res.json(ciudad)
 
     if(ciudad === null) {
       res.status(404).json({
         error: "Ciudad no encontrada"
       })
+      return
     }
+    res.json(ciudad)
 
   } catch (error) {
     res.status(500).json({
@@ -96,12 +97,12 @@ const deleteCiudad = async (req, res) => {
   const { id } = req.params
 
   try {
-    await prisma.ciudad.delete({
+    const ciudad_borrada = await prisma.ciudad.delete({
       where: {
         id: parseInt(id)
       }
     })
-    res.sendStatus(200)
+    res.status(200).json(ciudad_borrada)
 
   } catch (error) {
     res.status(404).json({

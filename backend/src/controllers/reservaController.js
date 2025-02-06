@@ -38,7 +38,9 @@ const getReserva = async (req, res) => {
       res.status(404).json({
         error: "Reserva no encontrada"
       })
+      return
     }
+    res.json(reserva)
 
     res.json(reserva)
 
