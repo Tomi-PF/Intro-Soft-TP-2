@@ -44,7 +44,7 @@
     </footer>
 
     <script>
-        function crear_card_hotel() {
+        function crear_card_ciudad() {
             const container = document.getElementById('ciudadesContainer')
             const mensaje = document.getElementById('mensajeError')
 
@@ -119,11 +119,11 @@
             .then(ciudad => {
                 alert(`La ciudad ${ciudad.nombre} ha sido borrada`)
                 container.innerText = ''
-                crear_card_hotel()
+                crear_card_ciudad()
             })
         }
         
-        crear_card_hotel()
+        crear_card_ciudad()
     </script>
 
 </body>
