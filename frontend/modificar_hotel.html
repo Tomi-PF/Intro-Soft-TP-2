@@ -3,112 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar Hotel - Aterrizar</title>
+    <title>Aterrizar</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
 </head>
 <body>
-
     <div class="navbar">
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
+                
                 <a href="index.html">
                     <img src="img/Logo.png" alt="Logo de Aterrizar" class="logo">
                 </a>
             </div>
+          
             <div id="navbarBasicExample" class="navbar-menu">
+                
                 <div class="navbar-start">
+                
                     <a href="index.html" class="navbar-item">Inicio</a>
+          
                     <a href="alojamientos.html" class="navbar-item">Alojamientos</a>
                     <a href="reservas.html" class="navbar-item">Reservas</a>
+                    
                 </div>
             </div>
         </nav>
     </div>
-
+    
     <div class="content">
-        <h2>Modificar Hotel</h2>
 
-        <form id="form-modificar-hotel">
-            <div class="field">
-                <label class="label">Nombre del Hotel</label>
-                <div class="control">
-                    <input class="input" type="text" id="nombre-hotel" required>
-                </div>
+        <section class="section-form">
+            
+            <div class="contenedor-form">
+                <header>Formulario para modificar ciudades</header>
+                <form class="form">
+                    
+                    <div class="input-box">
+                        <label>Foto del hotel</label>
+                        <input id="foto-hotel" type="text" placeholder="Ingrese la URL de la foto del hotel">
+                    </div>
+                    <div class="input-box">
+                        <label>Cantidad de estrellas</label>
+                        <input id="cant-estrellas" type="number" placeholder="Ingrese la cantidad de estrellas">
+                    </div>
+                    <div class="input-box">
+                        <label>Cantidad de habitaciones</label>
+                        <input id="cant-habitaciones" type="number" placeholder="Ingrese la cantidad de habitaciones">
+                    </div>
+                    <div class="input-box">
+                        <label>Precio de la noche</label>
+                        <input id="precio-noche" type="number" placeholder="Ingrese el precio de la noche">
+                    </div>
+                    <div class="input-box">
+                        <label>Calle del hotel</label>
+                        <input id="calle" type="text" placeholder="Ingrese la calle del hotel">
+                    </div>
+                    <div class="input-box">
+                        <label>Numero de la calle</label>
+                        <input id="num-calle" type="number" placeholder="Ingrese el número de la calle" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Número de telefono</label>
+                        <input id="tel" type="number" placeholder="Ingrese número de telefono" required>
+                    </div>
+                    
+                </form>
             </div>
-
-            <div class="field">
-                <label class="label">Dirección</label>
-                <div class="control">
-                    <input class="input" type="text" id="direccion-hotel" required>
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Número de Habitaciones</label>
-                <div class="control">
-                    <input class="input" type="number" id="habitaciones-hotel" required>
-                </div>
-            </div>
-
-            <div class="field">
-                <button class="button is-primary" type="submit">Modificar Hotel</button>
-            </div>
-        </form>
+        </section>
 
         <a class="button is-info is-outlined" href="alojamientos.html">Volver</a>
+        
     </div>
-
     <footer>
         <p>Contacto: <a href="mailto:Aterrizar@gmail.com">Aterrizar@gmail.com</a> | Teléfono: 0800-777-2354</p>
     </footer>
-
+    
     <script>
-        const parametros_url = new URLSearchParams(window.location.search);
-        const id = parametros_url.get('id');
 
-        // Función para cargar los datos del hotel para modificación
-        fetch(`http://localhost:3000/api/v1/hoteles/${id}`)
-        .then(response => response.json())
-        .then(hotel => {
-            document.getElementById('nombre-hotel').value = hotel.nombre;
-            document.getElementById('direccion-hotel').value = hotel.direccion;
-            document.getElementById('habitaciones-hotel').value = hotel.habitaciones;
-        });
+        const parametros_url = new URLSearchParams(window.location.search)
+        const nombre_hotel = parametros_url.get('nombre')
+        const id_ciudad = parametros_url.get('id')
+        let id_hotel = ''
 
-        // Función para modificar el hotel
-        document.getElementById('form-modificar-hotel').addEventListener('submit', (event) => {
-            event.preventDefault();
+        document.addEventListener('DOMContentLoaded', () => {
 
-            const nombre = document.getElementById('nombre-hotel').value;
-            const direccion = document.getElementById('direccion-hotel').value;
-            const habitaciones = document.getElementById('habitaciones-hotel').value;
+            fetch('http://localhost:3000/api/v1/hoteles/' + nombre_hotel)
+            .then(response => response.json())
+            .then(hotel => {
+                id_hotel = hotel.id
+                
+                document.getElementById('foto-hotel').value = hotel.foto_hotel
+                document.getElementById('cant-estrellas').value = hotel.cant_estrellas
+                document.getElementById('cant-habitaciones').value = hotel.cant_habitaciones
+                document.getElementById('precio-noche').value = hotel.precio_noche
+                document.getElementById('calle').value = hotel.calle
+                document.getElementById('num-calle').value = hotel.num_calle
+                document.getElementById('tel').value = hotel.telefono
+                
+            })
 
-            const datosModificados = {
-                nombre,
-                direccion,
-                habitaciones
+        })
+
+        function limpiar_campos(){
+            document.getElementById('foto-hotel').value = ''
+            document.getElementById('cant-estrellas').value = ''
+            document.getElementById('cant-habitaciones').value = ''
+            document.getElementById('precio-noche').value = ''
+            document.getElementById('calle').value = ''
+            document.getElementById('num-calle').value = ''
+            document.getElementById('tel').value = ''
+        }
+        
+        function enviar_datos(){
+            event.preventDefault()
+            
+            const foto_hotel = document.getElementById('foto-hotel').value;
+            const cant_estrellas = document.getElementById('cant-estrellas').value;
+            const cant_habitaciones = document.getElementById('cant-habitaciones').value;
+            const precio_noche = document.getElementById('precio-noche').value;
+            const calle = document.getElementById('calle').value;
+            const num_calle = document.getElementById('num-calle').value;
+            const telefono = document.getElementById('tel').value;
+        
+
+            let datos_modificacion = {
+                id: parseInt(id_hotel),
+                nombre: nombre_hotel.trim(),
+                foto_hotel: foto_hotel.trim(),
+                id_ciudad: parseInt(id_ciudad),
+                cant_estrellas: parseInt(cant_estrellas),
+                cant_habitaciones: parseInt(cant_habitaciones),
+                precio_noche: parseInt(precio_noche),
+                calle: calle.trim(),
+                num_calle: parseInt(num_calle),
+                telefono: parseInt(telefono)
             };
 
-            fetch(`http://localhost:3000/api/v1/hoteles/${id}`, {
-                method: 'PATCH',
+            fetch('http://localhost:3000/api/v1/ciudades/' + parseInt(id_ciudad), {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(datosModificados)
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Hotel modificado exitosamente');
-                window.location.href = `info_hotel.html?id=${data.id}`;
-            })
-            .catch(error => {
-                console.error('Error al modificar el hotel:', error);
-                alert('Hubo un error al modificar el hotel. Intenta nuevamente.');
+                body: JSON.stringify(datos_modificacion)
+            }).then(response => {
+                if (response.ok) {
+                    alert(`Hotel ${nombre_hotel} modificado con éxito`)
+                    limpiar_campos()
+                }
+                else {
+                    alert('Error al modificar el hotel')
+                }
             });
-        });
+        }
+        
     </script>
-
 </body>
 </html>
-
