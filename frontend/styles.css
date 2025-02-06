@@ -457,3 +457,6 @@ button.prev:hover, button.next:hover {
     opacity: 1;
 }
 
+#botones-hotel {
+    margin: 10px;
+}

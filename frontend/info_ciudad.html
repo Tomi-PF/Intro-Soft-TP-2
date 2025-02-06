@@ -34,15 +34,16 @@
         
         <p id="datos-ciudad"></p>
 
-        <a id="boton-modificar">Modificar datos ciudad<a/>
+        <a class="button is-primary is-outlined" id="boton-modificar">Modificar datos ciudad<a/>
 
         <a class="button is-info is-outlined" href="alojamientos.html">Volver</a>
     </div>
 
+    <div id="botones-hotel">
      <!-- Botón para redirigir a la página de crear hoteles -->
-     <a id="crear-hoteles" class="button is-info is-outlined">Crear Hotel</a>
-
-     <a class="button is-info is-outlined" href="alojamientos.html">Volver</a>
+        <a id="crear-hoteles" class="button is-primary is-outlined">Crear Hotel</a>
+        <a id="ver-hoteles" class="button is-primary is-outlined">Ver hoteles</a>
+        <a class="button is-info is-outlined" href="alojamientos.html">Volver</a>
     </div>
 
     <footer>
@@ -52,10 +53,15 @@
     <script>
         const parametros_url = new URLSearchParams(window.location.search)
         const id = parametros_url.get('id')
+
         const boton_crear_hotel = document.getElementById('crear-hoteles')
         boton_crear_hotel.addEventListener('click', () => {
             boton_crear_hotel.href = `crear_hoteles.html?id=${id}`
         }) 
+        const boton_ver_hoteles = document.getElementById('ver-hoteles')
+        boton_crear_hotel.addEventListener('click', () => {
+            boton_crear_hotel.href = `ver_hoteles.html?id=${id}`
+        })
         
         function crear_info_hotel() {
             fetch('http://localhost:3000/api/v1/ciudades/' + parseInt(id))
