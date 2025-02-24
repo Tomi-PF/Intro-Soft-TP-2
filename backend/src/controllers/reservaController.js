@@ -78,7 +78,7 @@ const createReserva = async (req, res) => {
       })
     }
 
-    if (new Date(fecha_salida) < new Date(fecha_ingreso)) {
+    while (new Date(fecha_salida) < new Date(fecha_ingreso)) {
       return res.status(400).json({
         error: "La fecha de salida debe ser posterior a la de ingreso"
       })
