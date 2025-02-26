@@ -393,6 +393,12 @@ button.prev:hover, button.next:hover {
     margin-bottom: 20px;
 }
 
+.is-info {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
 .is-primary {
     margin-right: 20px;
     margin-bottom: 10px;
