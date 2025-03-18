@@ -47,20 +47,20 @@ npm run start
 
 ### En la carpeta "backend"
 
+Para **iniciar** la **base de datos**:
+
+```sh
+docker compose up -d
+```
+
 Para **realizar** las **migraciones** de las **tablas** de la **base de datos**:
 
 ```sh
 npx prisma migrate dev
 ```
 
-Para **iniciar** la **base de datos**:
-
-```sh
-docker-compose up -d
-```
-
 Para **detener** la **ejecución**:
 
 ```sh
-docker-compose down
+docker compose down
 ```
